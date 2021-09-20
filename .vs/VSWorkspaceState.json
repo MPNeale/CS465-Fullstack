@@ -7,8 +7,10 @@
     "\\app_server\\views",
     "\\app_server\\views\\layouts",
     "\\app_server\\views\\partials",
-    "\\public"
+    "\\data",
+    "\\public",
+    "\\public\\css"
   ],
-  "SelectedNode": "\\.gitignore",
+  "SelectedNode": "\\app_server\\controllers\\main.hbs.js",
   "PreviewInSolutionExplorer": false
 }
