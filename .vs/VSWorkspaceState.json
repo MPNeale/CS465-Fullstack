@@ -2,7 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\app_server",
-    "\\app_server\\controllers",
+    "\\app_server\\models",
     "\\app_server\\routes",
     "\\app_server\\views",
     "\\app_server\\views\\layouts",
@@ -11,6 +11,6 @@
     "\\public",
     "\\public\\css"
   ],
-  "SelectedNode": "\\app_server\\controllers\\main.hbs.js",
+  "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
 }
