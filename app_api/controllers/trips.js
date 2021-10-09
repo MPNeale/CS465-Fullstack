@@ -1,10 +1,10 @@
 const mongoose = require('mongoose'); //.set('debug', true);
-const Model = mongoose.model('trips'); // Import the mongoose database library and our schema so it is available to use here
+const model = mongoose.model('trips'); // Import the mongoose database library and our schema so it is available to use here
 
 //Get: trips - lists all the trips
 // callback method registered in the /api/trips route
 const tripsList = async (req,res) => {
-	Model
+	model
 		.find({}) // empty filter for all - use the mongoose .find() method with no filter to return all instances
 		.exec((err, trips) => {
 			// if nothing is returned, send an HTTP 404 status
@@ -28,7 +28,7 @@ const tripsList = async (req,res) => {
 // GET: /trips/:tripCode - returns a single trip
 // callback method registered in the /api/trips/{tripCode} route
 const tripsFindByCode = async (req,res) => {
-	Model
+	model
 		// use mongoose .find() method with filter set to the tripCode passed on the URL
 		.find({ 'code': req.params.tripCode })
 		.exec((err, trip) => {
@@ -48,7 +48,62 @@ const tripsFindByCode = async (req,res) => {
 		});
 };
 
+const tripsAddTrip = async (req, res) => {
+	model
+	.create({
+		code: req.body.code,
+		name: req.body.name,
+		length: req.body.length,
+		start: req.body.start,
+		resort: req.body.resort,
+		perPerson: req.body.perPerson,
+		image: req.body.image,
+		description: req.body.description
+	},
+	(err, trip) => {
+		if (err) {
+			return res
+				.status(400) // bad request invalid content
+				.json(err);
+		} else {
+			return res
+				.status(201) // created
+				.json(trip);
+		}
+		
+	});
+}
+
+const tripsUpdateTrip = async (req, res) => {
+	console.log(req.body);
+	model
+		.findOneAndUpdate({ 'code': req.params.tripCode }, {
+			code: req.body.code,
+			name: req.body.name,
+			length: req.body.length,
+			start: req.body.start,
+			resort: req.body.resort,
+			perPerson: req.body.perPerson,
+			image: req.body.image,
+			description: req.body.description
+		}, { new: true })
+		.then(trip => {
+			if(!trip) {
+				return res
+					.status(404)
+					.send({
+						message: "Trip not found with code " + req.params.tripCode
+					});
+			}
+			return res
+				.status(500) //server error
+				.json(err);
+		});
+}
+
 module.exports = {
 	tripsList,
-	tripsFindByCode
+	tripsFindByCode,
+	tripsAddTrip,
+	tripsUpdateTrip
 };
