@@ -11,6 +11,6 @@
     "\\app_admin\\src\\assets",
     "\\app_admin\\src\\assets\\images"
   ],
-  "SelectedNode": "\\app_admin\\src\\assets\\images",
+  "SelectedNode": "\\app_admin\\src\\app\\edit-trip\\edit-trip.component.ts",
   "PreviewInSolutionExplorer": false
 }
