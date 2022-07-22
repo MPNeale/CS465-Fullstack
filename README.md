@@ -25,4 +25,4 @@ Reflection
 
     How has this course helped you in reaching your professional goals? What skills have you learned, developed, or mastered in this course to help you become a more marketable candidate in your career field?
     
-    Understanding how things work is a good marketable skill. Personally I don't think I will be going into full stack development.
+    Understanding how things work is a good marketable skill.
